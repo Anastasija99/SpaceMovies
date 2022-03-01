@@ -1,3 +1,4 @@
 # SpaceMovies
 
-![image](https://user-images.githubusercontent.com/68649270/156251240-a91e3238-18f8-4a7b-a7c3-41f0b9d1456d.png)
+![image](https://user-images.githubusercontent.com/68649270/156252894-1ea8c126-3141-45f4-bee1-5325fa6a75ca.png)
+
