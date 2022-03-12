@@ -23,14 +23,14 @@ public class InterestList {
 
     private LocalDateTime dateCreated;
 
+    @Enumerated(EnumType.STRING)
+    private InterestListEnum status;
+
     @ManyToOne
     private User user;
 
     @ManyToMany
     private List<Movie> movies;
-
-    @Enumerated(EnumType.STRING)
-    private InterestListEnum status;
 
     public InterestList(User user) {
         this.user = user;
