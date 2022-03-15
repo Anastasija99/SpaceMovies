@@ -28,6 +28,9 @@ public class Movie {
 
     private Float price;
 
+    @Column(length = 1000)
+    private String description;
+
     @Enumerated(EnumType.STRING)
     private LanguageEnum language;
 
