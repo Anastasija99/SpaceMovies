@@ -16,8 +16,8 @@ public class HomeController {
     }
 
     @GetMapping("/access-denied")
-    public String getAccessDeniedPage(Model model){
-        model.addAttribute("sectionComponent", "403");
-        return "masterSkeleton";
+    public String getAccessDeniedPage(){
+//        model.addAttribute("sectionComponent", "403");
+        return "403";
     }
 }
