@@ -4,8 +4,7 @@ import mk.ukim.finki.spacemovies.model.Actor;
 import mk.ukim.finki.spacemovies.service.ActorService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,5 +30,11 @@ public class ActorController {
         model.addAttribute("actors", actorList);
         model.addAttribute("sectionComponent", "actors");
         return "masterSkeleton";
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteActor(@PathVariable Long id){
+        this.actorService.delete(id);
+        return "redirect:/actors";
     }
 }

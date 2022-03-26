@@ -38,7 +38,7 @@ public class ActorServiceImplementation implements ActorService {
 
     @Override
     public void delete(Long id) {
-        // TODO: ako ima vreme
+        this.actorRepository.deleteById(id);
     }
 
     @Override
