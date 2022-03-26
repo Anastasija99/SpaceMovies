@@ -13,4 +13,5 @@ import java.util.List;
 public interface GenreRepository extends JpaRepository<Genre, Long> {
 
     List<Genre> findAllByNameLike(String name);
+    void deleteByName(String name);
 }
