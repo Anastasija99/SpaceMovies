@@ -17,7 +17,7 @@ public class GenreController {
     }
 
     @GetMapping
-    public String getCategoryPage(Model model){
+    public String getGenrePage(Model model){
         model.addAttribute("genres", this.genreService.listGenres());
         model.addAttribute("sectionComponent", "genres");
         return "masterSkeleton";
