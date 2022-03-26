@@ -27,4 +27,9 @@ public class Actor {
     private Integer age;
 
     private String countryOfOrigin;
+
+    public Actor(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 }
