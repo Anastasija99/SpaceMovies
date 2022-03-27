@@ -19,22 +19,23 @@ public class ActorController {
     }
 
     @GetMapping
-    public String getActorPage(Model model, String firstname, String country){
+    public String getActorPage(Model model, String firstname, String country) {
         List<Actor> actorList = this.actorService.listActors();
-        if (firstname !=null) {
+        if (firstname != null) {
             actorList = this.actorService.searchActorsByName(firstname);
-        }
-        else if (country !=null) {
+        } else if (country != null) {
             actorList = this.actorService.searchActorsByCountry(country);
         }
         model.addAttribute("actors", actorList);
         model.addAttribute("sectionComponent", "actors");
+
         return "masterSkeleton";
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteActor(@PathVariable Long id){
+    public String deleteActor(@PathVariable Long id) {
         this.actorService.delete(id);
+
         return "redirect:/actors";
     }
 }

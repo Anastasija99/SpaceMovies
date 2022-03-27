@@ -18,7 +18,7 @@ public class GenreServiceImplementation implements GenreService {
 
     @Override
     public Genre create(String name, String description) {
-        if (name==null || name.isEmpty()) {
+        if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException();
         }
         Genre genre = new Genre(name, description);
@@ -28,7 +28,7 @@ public class GenreServiceImplementation implements GenreService {
 
     @Override
     public Genre update(String name, String description) {
-        if (name==null || name.isEmpty()) {
+        if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException();
         }
         Genre genre = new Genre(name, description);
@@ -39,7 +39,7 @@ public class GenreServiceImplementation implements GenreService {
 
     @Override
     public void delete(String name) {
-        if (name==null || name.isEmpty()) {
+        if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException();
         }
         genreRepository.deleteByName(name);

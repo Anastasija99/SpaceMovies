@@ -20,6 +20,7 @@ public class GenreController {
     public String getGenrePage(Model model){
         model.addAttribute("genres", this.genreService.listGenres());
         model.addAttribute("sectionComponent", "genres");
+
         return "masterSkeleton";
     }
 }

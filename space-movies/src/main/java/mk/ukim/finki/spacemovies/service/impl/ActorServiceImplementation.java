@@ -18,7 +18,7 @@ public class ActorServiceImplementation implements ActorService {
 
     @Override
     public Actor create(String firstName, String lastName) {
-        if (firstName==null || firstName.isEmpty() || lastName==null || lastName.isEmpty()) {
+        if (firstName == null || firstName.isEmpty() || lastName == null || lastName.isEmpty()) {
             throw new IllegalArgumentException();
         }
         Actor actor = new Actor(firstName, lastName);
@@ -28,7 +28,7 @@ public class ActorServiceImplementation implements ActorService {
 
     @Override
     public Actor update(String firstName, String lastName) {
-        if (firstName==null || firstName.isEmpty() || lastName==null || lastName.isEmpty()) {
+        if (firstName == null || firstName.isEmpty() || lastName == null || lastName.isEmpty()) {
             throw new IllegalArgumentException();
         }
         Actor actor = new Actor(firstName, lastName);
