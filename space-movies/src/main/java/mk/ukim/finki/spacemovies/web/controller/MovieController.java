@@ -1,6 +1,7 @@
 package mk.ukim.finki.spacemovies.web.controller;
 
 import mk.ukim.finki.spacemovies.model.Movie;
+import mk.ukim.finki.spacemovies.service.MovieService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,12 @@ import java.util.List;
 @Controller
 @RequestMapping("/movies")
 public class MovieController {
-//    private final MovieService movieService;
+
+    private final MovieService movieService;
+
+    public MovieController(MovieService movieService) {
+        this.movieService = movieService;
+    }
 
     @GetMapping
     public String getMoviePage(@RequestParam(required = false) String error, Model model) {
@@ -21,8 +27,8 @@ public class MovieController {
             model.addAttribute("error", error);
         }
 
-//        List<Movie> movies =
-//        model.addAttribute("movies", movies)
+        List<Movie> movies = this.movieService.findAll();
+        model.addAttribute("movies", movies);
 
         model.addAttribute("sectionComponent", "movies");
 
