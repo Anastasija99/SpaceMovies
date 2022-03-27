@@ -15,6 +15,7 @@
                             <th scope="col">Title</th>
                             <th scope="col">Price</th>
                             <th scope="col">Genre</th>
+                            <th scope="col">Language</th>
                             <th scope="col">Theatres</th>
                         </tr>
                         </thead>
@@ -22,7 +23,8 @@
                         <tr th:each="movie : ${movies}" class="interestList-item">
                             <td th:text="${movie.getTitle()}"></td>
                             <td th:text="${movie.getPrice()}"></td>
-                            <td th:text="${movie.getGenre() != null} ? ${movie.genre.name} : 'No Genre'"></td>
+                            <td th:text="${movie.getGenre() != null} ? ${movie.genre.name} : ''"></td>
+                            <td th:text="${movie.getLanguage() != null} ? ${movie.language} : ''"></td>
 <!--                            <td th:text="${movie.getTheatres() != null} ? ${movie.getTheatres().getName()} : 'No Theatres available'"></td>-->
                             <td class="text-right">
                                 <th:block sec:authorize="hasRole('ROLE_ADMIN')">
