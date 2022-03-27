@@ -18,6 +18,7 @@ public class MovieController {
         }
 
         model.addAttribute("sectionComponent", "movies");
+
         return "masterSkeleton";
     }
 

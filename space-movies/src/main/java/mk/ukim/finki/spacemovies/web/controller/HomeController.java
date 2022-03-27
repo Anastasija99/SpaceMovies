@@ -12,11 +12,13 @@ public class HomeController {
     @GetMapping
     public String getHomePage(Model model){
         model.addAttribute("sectionComponent", "homePage");
+
         return "masterSkeleton";
     }
 
     @GetMapping("/access-denied")
     public String getAccessDeniedPage(){
+
         return "403";
     }
 }
