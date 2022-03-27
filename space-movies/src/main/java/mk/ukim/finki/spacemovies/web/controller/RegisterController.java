@@ -16,9 +16,7 @@ public class RegisterController {
             model.addAttribute("hasError", true);
             model.addAttribute("error", error);
         }
-        model.addAttribute("sectionComponent", "register");
-
-        return "masterSkeleton";
+        return "register";
     }
 
     //TODO: POST MAPPING register after userService is done
