@@ -1,0 +1,17 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Categories</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<h2>Genres</h2>
+<ul>
+    <li th:each="genre: ${genres}">
+        <th:block th:text="${genre.name}"/>
+        (
+        <th:block th:text="${genre.description}"/>
+        )
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Actors</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<h2>Actors</h2>
+<ul>
+    <li th:each="actor: ${actors}">
+        <th:block th:text="${actor.firstName}"/>
+        <th:block th:text="${actor.lastName}"/>
+        (
+        <th:block th:text="${actor.age}"/>
+        ,
+        <th:block th:text="${actor.countryOfOrigin}"/>
+        )
+    </li>
+</ul>
+
+<!--<h3>Add New Actor</h3>-->
+<!--<form th:action="@{/category}" th:method="POST">-->
+<!--    <label for='name'>Name:</label><input id='name' name='name' type='text'/>-->
+<!--    <label for='desc'>Description:</label>:<input id='desc' name='description' type='text'/>-->
+<!--    <input type='submit' value='Submit'/>-->
+<!--</form>-->
+</body>
+</html>
