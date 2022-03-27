@@ -32,7 +32,7 @@ public class Movie {
     private String description;
 
     @Enumerated(EnumType.STRING)
-    private LanguageEnum language;
+    private LanguageEnum language; //DA NE BIDE ENUM?????
 
     @ManyToOne
     private Genre genre;
@@ -42,4 +42,16 @@ public class Movie {
 
     @ManyToMany
     private List<MovieTheatre> theatres;
+
+    public Movie(String title, Integer duration, LocalDate releaseDate, Float price, String description, LanguageEnum language, Genre genre, List<Actor> actors, List<MovieTheatre> theatres) {
+        this.title = title;
+        this.duration = duration;
+        this.releaseDate = releaseDate;
+        this.price = price;
+        this.description = description;
+        this.language = language;
+        this.genre = genre;
+        this.actors = actors;
+        this.theatres = theatres;
+    }
 }

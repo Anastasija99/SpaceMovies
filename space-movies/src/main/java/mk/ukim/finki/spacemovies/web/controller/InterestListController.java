@@ -24,6 +24,7 @@ public class InterestListController {
         // TODO: take interestList by username from InterestListService
 
         model.addAttribute("sectionComponent", "interest-list");
+
         return "masterSkeleton";
     }
 

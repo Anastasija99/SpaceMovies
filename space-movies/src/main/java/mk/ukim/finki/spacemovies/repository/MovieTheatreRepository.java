@@ -1,6 +1,5 @@
 package mk.ukim.finki.spacemovies.repository;
 
-import mk.ukim.finki.spacemovies.model.Movie;
 import mk.ukim.finki.spacemovies.model.MovieTheatre;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

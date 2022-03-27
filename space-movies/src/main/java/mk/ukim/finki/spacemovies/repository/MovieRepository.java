@@ -16,6 +16,10 @@ import java.util.Optional;
 public interface MovieRepository extends JpaRepository<Movie, Long> {
 
     Optional<Movie> findByTitle(String title);
+
+    Optional<Movie> deleteByTitle(String title);
+
     List<Movie> findAllByLanguage(LanguageEnum language);
+
     List<Movie> findAllByGenre(Genre genre);
 }

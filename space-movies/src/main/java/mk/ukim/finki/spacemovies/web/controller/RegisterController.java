@@ -12,11 +12,12 @@ public class RegisterController {
 
     @GetMapping
     public String getRegisterPage(@RequestParam(required = false) String error, Model model) {
-        if(error != null && !error.isEmpty()) {
+        if (error != null && !error.isEmpty()) {
             model.addAttribute("hasError", true);
             model.addAttribute("error", error);
         }
-        model.addAttribute("sectionComponent","register");
+        model.addAttribute("sectionComponent", "register");
+
         return "masterSkeleton";
     }
 
