@@ -3,23 +3,72 @@
     <title>Actors</title>
     <meta charset="utf-8"/>
 </head>
-<style>
-    ul .listItem {
-        list-style-type: none;
-    }
-</style>
 <body>
-<div class="d-grid gap-3">
-<h2 class="px-2">Actors</h2>
-<ul>
-    <li class="listItem p-3 border" th:each="actor: ${actors}">
-        <th:block th:text="${actor.firstName}"/>
-        <th:block th:text="${actor.lastName}"/>
-        (
-        <th:block th:text="${actor.age}"/>
-        ,
-        <th:block th:text="${actor.countryOfOrigin}"/>
-        )
+<div class="container my-3">
+    <div class="row">
+        <div>
+            <h1 class="display-4 font-weight-bold">Actors</h1>
+        </div>
+    </div>
+<!--    <div class="row" sec:authorize="hasRole('ROLE_ADMIN')">-->
+<!--        <div class="btn">-->
+<!--            <a style="color: black; background-color: white" class="btn btn-block" th:action="@{'/movies/add-actor'}">-->
+<!--                <i class="fa fa-plus"></i> Add new actor-->
+<!--            </a>-->
+<!--        </div>-->
+<!--    </div>-->
+</div>
+<div class="container pb-3 pt-1">
+    <div class="row">
+        <div class="col-6">
+            <form id="filter-actors-name">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="firstname"><small>Firstname</small></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <input id="firstname" name="firstname" type="text" placeholder="Search by firstname" class="form-control">
+                    </div>
+                    <div class="col-1">
+                        <button id="filter-name" type="submit" class="btn"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-6">
+            <form id="filter-actors-country">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="country"><small>Country</small></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <input id="country" name="country" type="text" placeholder="Search by country" class="form-control">
+                    </div>
+                    <div class="col-1">
+                        <button id="filter-country" type="submit" class="btn"><i class="fa fa-search" ></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="container py-3">
+<ul style="list-style-type: none">
+    <li th:each="actor: ${actors}">
+       <h5>
+           <th:block th:text="${actor.firstName}"/>
+           <th:block th:text="${actor.lastName}"/>
+           <small class="text-secondary">
+               <th:block th:text="${actor.age}"/>y
+               <th:block th:text="${actor.countryOfOrigin}"/>
+           </small>
+       </h5>
     </li>
 </ul>
 </div>

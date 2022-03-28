@@ -1,10 +1,18 @@
 <div xmlns:th="http://www.thymeleaf.org">
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">Movies</h1>
+    <div class="container my-3">
+        <div class="row">
+            <div>
+                <h1 class="display-3 p-5 font-weight-bold">Latest movies</h1>
+            </div>
         </div>
-    </section>
-
+        <div class="row">
+            <div class="btn">
+                <a style="color: black; background-color: white" class="btn btn-block" th:action="@{'/movies/add-movie'}">
+                    <i class="fa fa-plus"></i> Add new movie
+                </a>
+            </div>
+        </div>
+    </div>
     <div class="container mb-4" th:if="${movies.size() > 0}">
         <div class="row">
             <div class="col-12">
@@ -12,15 +20,25 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
+                            <th scope="col"></th>
                             <th scope="col">Title</th>
                             <th scope="col">Price</th>
                             <th scope="col">Genre</th>
                             <th scope="col">Language</th>
-                            <th scope="col">Theatres</th>
+<!--                            <th scope="col">Theatres</th>-->
+                            <th scope="col"></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr class="interestList-item" th:each="movie : ${movies}">
+                            <td>
+                                <form th:action="@{'/movies/add'}"
+                                      th:method="POST">
+                                    <button class="btn btn-sm btn-primary"
+                                            type="submit"><i class="fa fa-plus"></i> Add to my<br>interest list
+                                    </button>
+                                </form>
+                            </td>
                             <td th:text="${movie.getTitle()}"></td>
                             <td th:text="${movie.getPrice()}"></td>
                             <td th:text="${movie.getGenre() != null} ? ${movie.genre.name} : ''"></td>
@@ -30,38 +48,22 @@
                                 <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                                     <form th:action="@{'/movies/delete/{id}' (id=${movie.getId()})}"
                                           th:method="DELETE">
-                                        <button class="btn btn-sm btn-danger delete-product"
+                                        <button class="btn btn-sm btn-danger"
                                                 type="submit">
-                                            <i class="fa fa-trash">Delete</i>
+                                            <i class="fa fa-trash"> </i> Delete
                                         </button>
                                     </form>
                                 </th:block>
                                 <th:block sec:authorize="hasRole('ROLE_ADMIN')">
-                                    <a class="btn btn-sm btn-info edit-product"
+                                    <a class="btn btn-sm btn-info" style="color: white"
                                        th:action="@{'/movies/edit-movie/{id}' (id=${movie.getId()})}">
-                                        <i class="fa fa-trash">Edit</i>
+                                        <i class="fa fa-pencil-square-o"> </i> Edit
                                     </a>
                                 </th:block>
-                                <form th:action="@{'/movies/add'}"
-                                      th:method="POST">
-                                    <button class="btn btn-sm btn-primary cart-product"
-                                            type="submit">
-                                        <i class="fa fa-trash">Add movies to interest list</i>
-                                    </button>
-                                </form>
                             </td>
                         </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
-            <div class="col mb-3">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12">
-                        <a class="btn btn-block btn-dark add-product-btn" th:action="@{'/movies/add-movie'}">
-                            Add new movie
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>

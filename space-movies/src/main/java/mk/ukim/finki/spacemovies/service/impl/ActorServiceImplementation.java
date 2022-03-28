@@ -48,12 +48,12 @@ public class ActorServiceImplementation implements ActorService {
 
     @Override
     public List<Actor> searchActorsByName(String firstname) {
-        return actorRepository.findAllByFirstNameLike(firstname);
+        return actorRepository.findAllByFirstNameContaining(firstname);
         // TODO : ako ima vreme za drugite find
     }
 
     @Override
     public List<Actor> searchActorsByCountry(String country) {
-        return actorRepository.findAllByCountryOfOriginLike(country);
+        return actorRepository.findAllByCountryOfOriginContaining(country);
     }
 }
