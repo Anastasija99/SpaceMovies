@@ -3,10 +3,16 @@
     <title>Actors</title>
     <meta charset="utf-8"/>
 </head>
+<style>
+    ul .listItem {
+        list-style-type: none;
+    }
+</style>
 <body>
-<h2>Actors</h2>
+<div class="d-grid gap-3">
+<h2 class="px-2">Actors</h2>
 <ul>
-    <li th:each="actor: ${actors}">
+    <li class="listItem p-3 border" th:each="actor: ${actors}">
         <th:block th:text="${actor.firstName}"/>
         <th:block th:text="${actor.lastName}"/>
         (
@@ -16,6 +22,7 @@
         )
     </li>
 </ul>
+</div>
 
 <!--<h3>Add New Actor</h3>-->
 <!--<form th:action="@{/category}" th:method="POST">-->

@@ -6,6 +6,7 @@ import mk.ukim.finki.spacemovies.service.GenreService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GenreServiceImplementation implements GenreService {
@@ -35,6 +36,11 @@ public class GenreServiceImplementation implements GenreService {
 //      TODO:  Genre genre = genreRepository.findByName()
         genreRepository.save(genre);
         return genre;
+    }
+
+    @Override
+    public Optional<Genre> findById(Long id) {
+        return this.genreRepository.findById(id);
     }
 
     @Override

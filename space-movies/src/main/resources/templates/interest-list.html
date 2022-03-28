@@ -13,7 +13,7 @@
 
     <div class="container mb-4">
         <div class="row">
-           <div class="col-12"> <!-- add case if 0 movies th:if="${movies.size() > 0}" -->
+           <div class="col-12" th:if="${movies.size() > 0}">
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>

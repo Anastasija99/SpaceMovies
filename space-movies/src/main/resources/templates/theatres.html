@@ -12,10 +12,12 @@
 <div class="d-grid gap-3">
 <h2 class="px-2">Genres</h2>
 <ul>
-    <li class="listItem p-3 border" th:each="genre: ${genres}">
-        <th:block th:text="${genre.name}"/>
+    <li class="listItem p-3 border" th:each="theatre: ${theatres}">
+        <th:block th:text="${theatre.name}"/>
         (
-        <th:block th:text="${genre.description}"/>
+        <th:block th:text="${theatre.city}"/>
+        ,
+        <th:block th:text="${theatre.address}"/>
         )
     </li>
 </ul>

@@ -1,5 +1,6 @@
 package mk.ukim.finki.spacemovies.service;
 
+import mk.ukim.finki.spacemovies.model.Genre;
 import mk.ukim.finki.spacemovies.model.Movie;
 import mk.ukim.finki.spacemovies.model.enumerations.LanguageEnum;
 
