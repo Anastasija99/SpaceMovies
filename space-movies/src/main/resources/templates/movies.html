@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="btn">
-                <a style="color: black; background-color: white" class="btn btn-block" th:action="@{'/movies/add-movie'}">
+                <a class="btn btn-block" href="/movies/add-movie" style="color: black; background-color: white">
                     <i class="fa fa-plus"></i> Add new movie
                 </a>
             </div>
@@ -25,7 +25,7 @@
                             <th scope="col">Price</th>
                             <th scope="col">Genre</th>
                             <th scope="col">Language</th>
-<!--                            <th scope="col">Theatres</th>-->
+                            <!--                            <th scope="col">Theatres</th>-->
                             <th scope="col"></th>
                         </tr>
                         </thead>
@@ -54,9 +54,10 @@
                                         </button>
                                     </form>
                                 </th:block>
-                                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
-                                    <a class="btn btn-sm btn-info" style="color: white"
-                                       th:action="@{'/movies/edit-movie/{id}' (id=${movie.getId()})}">
+                                <th:block> <!-- sec:authorize="hasRole('ROLE_ADMIN')"-->
+                                    <a class="btn btn-sm btn-info"
+                                       style="color: white"
+                                       th:href="@{'/movies/edit-movie/{id}' (id=${movie.getId()})}">
                                         <i class="fa fa-pencil-square-o"> </i> Edit
                                     </a>
                                 </th:block>

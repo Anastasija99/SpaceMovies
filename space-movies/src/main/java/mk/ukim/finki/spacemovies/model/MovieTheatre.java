@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * Movie theatre model
@@ -24,6 +25,19 @@ public class MovieTheatre {
     private String address;
 
     private Integer movieTheatreHalls;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MovieTheatre that = (MovieTheatre) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
     public MovieTheatre(String name, String city, String address, Integer movieTheatreHalls) {
         this.name = name;
