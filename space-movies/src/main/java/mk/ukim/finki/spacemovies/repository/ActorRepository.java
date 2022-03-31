@@ -5,12 +5,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Actor repository.
  */
 @Repository
 public interface ActorRepository extends JpaRepository<Actor, Long> {
+
+    Optional<Actor> findActorById(Long id);
 
     List<Actor> findAllByFirstNameContaining(String firstname);
 

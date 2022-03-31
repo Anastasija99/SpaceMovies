@@ -28,8 +28,16 @@ public class Actor {
 
     private String countryOfOrigin;
 
+    public Actor(String firstName, String lastName, Integer age, String countryOfOrigin) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.countryOfOrigin = countryOfOrigin;
+    }
+
     public Actor(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+
     }
 }

@@ -1,0 +1,36 @@
+<th:block xmlns="http://www.w3.org/1999/xhtml">
+    <div class="container">
+        <form action="/actors/add" method="POST">
+            <input id="id" name="id" th:value="(${actor} != null ? ${actor.getId()} : '')" type="hidden">
+            <div class="mb-3">
+                <label class="form-label" for="firstName">First name</label>
+                <input class="form-control" id="firstName" name="firstName"
+                       th:value="(${actor} != null ? ${actor.getFirstName()} : '')"
+                       type="text">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="lastName">Last name</label>
+                <input class="form-control" id="lastName" name="lastName"
+                       th:value="(${actor} != null ? ${actor.getLastName()} : '')"
+                       type="text">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="age">Age</label>
+                <input class="form-control" id="age" name="age"
+                       th:value="(${actor} != null ? ${actor.getAge()} : '')"
+                       type="number">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="country">Country of Origin</label>
+                <input class="form-control" id="country" name="country"
+                       th:value="(${actor} != null ? ${actor.getCountryOfOrigin()} : '')"
+                       type="text">
+            </div>
+
+            <button class="btn btn-primary" id="submit" type="submit">Submit</button>
+        </form>
+    </div>
+</th:block>

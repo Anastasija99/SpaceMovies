@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface ActorService {
 
-    Actor create(String firstName, String lastName);
+    Actor create(String firstName, String lastName, Integer age, String country);
 
-    Actor update(String firstName, String lastName);
+    Actor update(Long id, String firstName, String lastName, Integer age, String country);
 
     void delete(Long id);
 
@@ -17,4 +17,6 @@ public interface ActorService {
     List<Actor> searchActorsByName(String firstname);
 
     List<Actor> searchActorsByCountry(String country);
+
+    Actor findActorById(Long id);
 }

@@ -38,4 +38,37 @@ public class ActorController {
 
         return "redirect:/actors";
     }
+
+    @GetMapping("/edit-actor/{id}")
+    public String editActor(@PathVariable Long id, Model model) {
+        if (this.actorService.listActors() != null) {
+            Actor actor = this.actorService.findActorById(id);
+            model.addAttribute("actor", actor);
+            model.addAttribute("sectionComponent", "add-actor");
+            return "masterSkeleton";
+        }
+        return "redirect:/actors?error=ActorNotFound";
+    }
+
+    @GetMapping("/add-actor")
+    public String addActor(Model model) {
+        model.addAttribute("sectionComponent", "add-actor");
+        return "masterSkeleton";
+    }
+
+    @PostMapping("/add")
+    public String saveActor(
+            @RequestParam(required = false) Long id,
+            @RequestParam String firstName,
+            @RequestParam String lastName,
+            @RequestParam String country,
+            @RequestParam Integer age
+    ) {
+        if (id != null) {
+            this.actorService.update(id, firstName, lastName, age, country);
+        } else {
+            this.actorService.create(firstName, lastName, age, country);
+        }
+        return "redirect:/actors";
+    }
 }
