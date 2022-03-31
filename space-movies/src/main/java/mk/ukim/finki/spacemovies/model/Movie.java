@@ -32,7 +32,7 @@ public class Movie {
     private String description;
 
     @Enumerated(EnumType.STRING)
-    private LanguageEnum language; //DA NE BIDE ENUM?????
+    private LanguageEnum language;
 
     @ManyToOne
     private Genre genre;

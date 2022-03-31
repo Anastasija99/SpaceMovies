@@ -29,7 +29,7 @@ public class MovieTheatreServiceImplementation implements MovieTheatreService {
 
     @Override
     public List<MovieTheatre> findByCity(String city) {
-        return this.movieTheatreRepository.findAllByCity(city);
+        return this.movieTheatreRepository.findAllByCityContaining(city);
     }
 
     @Override

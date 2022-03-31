@@ -93,4 +93,15 @@ public class MovieServiceImplementation implements MovieService {
     public void deleteById(Long id) {
         this.movieRepository.deleteById(id);
     }
+
+    @Override
+    public List<Movie> findAllByGenre(Long searchGenre) {
+        Genre genre = searchGenre != null ?
+                this.genreRepository.findById(searchGenre).orElseThrow(() -> new NotFoundException(searchGenre))
+                : null;
+
+        if (genre != null) {
+            return this.movieRepository.findAllByGenre(genre);
+        } else return this.movieRepository.findAll();
+    }
 }

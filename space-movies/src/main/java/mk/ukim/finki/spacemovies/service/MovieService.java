@@ -24,6 +24,6 @@ public interface MovieService {
 
 //    TODO: ako ima vreme na kraj
 //    List<Movie> findAllByLanguage(String searchLanguage);
-//    List<Movie> findAllByGenre(String searchGenre);
+    List<Movie> findAllByGenre(Long searchGenre);
 
 }

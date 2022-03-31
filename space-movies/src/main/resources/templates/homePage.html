@@ -1,8 +1,91 @@
-<div class="container my-3">
-    <div class="row">
+<div class="container">
+
+    <div class="py-3">
+        <div class="row">
+            <form id="filter-movies-by-genre" class="py-2">
+                <ul style="list-style-type: none; display: inline-block;">
+                    <li th:each="genre: ${genres}" style="float: left;">
+                        <button id="genre-filter"
+                                type="submit"
+                                class="btn btn-link"
+                                name="genreId"
+                                th:text="${genre.name}" th:value="${genre.id}"
+                        >
+                        </button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+
+        <div class="row">
+            <ul style="list-style-type: none;" class="d-flex flex-row w-100" >
+                <li th:each="movie: ${movies}" style="float: left;" class="p-2 mx-4">
+                    <div class="row">
+                        <h3><th:block th:text="${movie.title}"/></h3>
+                    </div>
+                    <div class="row">
+                        <small>
+                            <th:block th:text="${movie.genre.name}"/>
+                        </small>
+                    </div>
+                    <div class="row">
+                        <small>
+                            <th:block th:text="${movie.duration}"/> min
+                        </small>
+                    </div>
+                    <div class="row">
+                        <small>
+                            <th:block th:text="${movie.description}"/>
+                        </small>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="p-5 bg-light rounded-lg w-50" >
         <div>
-            <h1> all genres with filter by genres</h1>
-            <h1 class="display-3 p-5 font-weight-bold">Carousel</h1>
+            <h3>Where can I watch the latest movies?</h3>
+        </div>
+
+        <div class="px-4">
+            <form id="filter-theatres-city" class="py-2">
+                <div class="row">
+                    <div class="col-form-label">
+                        <label for="city" >I am in </label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" id="city" name="city" placeholder="Search movie theatres by city" type="text">
+                    </div>
+                    <div>
+                        <button class="btn" id="filter-city" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="row">
+            <ul style="list-style-type: none" class="d-flex flex-row w-100">
+                <li th:each="theatre: ${theatres}" style="float: left;" class="p-2 mx-4">
+                    <div class="row">
+                       <h5><th:block th:text="${theatre.name}"/></h5>
+                    </div>
+                    <div class="row">
+                        <small>
+                            location: <b><th:block th:text="${theatre.city}"/></b>
+                            <th:block th:text="${theatre.address}"/>
+                        </small>
+                    </div>
+                    <div class="row">
+                        <small>
+                            halls: <th:block th:text="${theatre.movieTheatreHalls}"/>
+                        </small>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
+<br>
+    <br>
 </div>
