@@ -9,9 +9,9 @@ public interface GenreService {
 
     Genre create(String name, String description);
 
-    Genre update(String name, String description);
+    Genre update(Long id, String name, String description);
 
-    Optional<Genre> findById(Long id);
+    Genre findById(Long id);
 
     void delete(String name);
 

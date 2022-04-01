@@ -14,4 +14,9 @@ public interface MovieTheatreService {
     List<MovieTheatre> findByCity(String city);
 
     void deleteById(Long id);
+
+    MovieTheatre update(Long id, String name, String city, String address, Integer movieTheatreHalls);
+
+    MovieTheatre create(String name, String city, String address, Integer movieTheatreHalls);
+
 }

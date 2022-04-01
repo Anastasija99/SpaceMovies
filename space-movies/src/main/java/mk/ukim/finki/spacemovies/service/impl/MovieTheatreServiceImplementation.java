@@ -1,6 +1,7 @@
 package mk.ukim.finki.spacemovies.service.impl;
 
 import mk.ukim.finki.spacemovies.model.MovieTheatre;
+import mk.ukim.finki.spacemovies.model.exceptions.NotFoundException;
 import mk.ukim.finki.spacemovies.repository.MovieTheatreRepository;
 import mk.ukim.finki.spacemovies.service.MovieTheatreService;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,29 @@ public class MovieTheatreServiceImplementation implements MovieTheatreService {
 
     public MovieTheatreServiceImplementation(MovieTheatreRepository movieTheatreRepository) {
         this.movieTheatreRepository = movieTheatreRepository;
+    }
+
+    @Override
+    public MovieTheatre create(String name, String city, String address, Integer movieTheatreHalls) {
+        if (name == null || name.isEmpty() || city == null || city.isEmpty() || address == null || address.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+        MovieTheatre theatre = new MovieTheatre(name, city, address, movieTheatreHalls);
+        movieTheatreRepository.save(theatre);
+        return theatre;
+    }
+
+    @Override
+    public MovieTheatre update(Long id, String name, String city, String address, Integer movieTheatreHalls) {
+        if (name == null || name.isEmpty() || city == null || city.isEmpty() || address == null || address.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+        MovieTheatre theatre = this.movieTheatreRepository.findById(id).orElseThrow(() -> new NotFoundException(id));
+        theatre.setName(name);
+        theatre.setCity(city);
+        theatre.setAddress(address);
+        theatre.setMovieTheatreHalls(movieTheatreHalls);
+        return movieTheatreRepository.save(theatre);
     }
 
     @Override

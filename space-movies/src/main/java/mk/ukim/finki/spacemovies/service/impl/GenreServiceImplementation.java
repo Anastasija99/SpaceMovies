@@ -1,14 +1,16 @@
 package mk.ukim.finki.spacemovies.service.impl;
 
 import mk.ukim.finki.spacemovies.model.Genre;
+import mk.ukim.finki.spacemovies.model.exceptions.NotFoundException;
 import mk.ukim.finki.spacemovies.repository.GenreRepository;
 import mk.ukim.finki.spacemovies.service.GenreService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
+@Transactional
 public class GenreServiceImplementation implements GenreService {
 
     private final GenreRepository genreRepository;
@@ -28,19 +30,20 @@ public class GenreServiceImplementation implements GenreService {
     }
 
     @Override
-    public Genre update(String name, String description) {
-        if (name == null || name.isEmpty()) {
+    public Genre update(Long id, String name, String description) {
+        if (name == null || name.isEmpty() || description == null || description.isEmpty()) {
             throw new IllegalArgumentException();
         }
-        Genre genre = new Genre(name, description);
+        Genre genre = this.genreRepository.findById(id).orElseThrow(() -> new NotFoundException(id));
 //      TODO:  Genre genre = genreRepository.findByName()
-        genreRepository.save(genre);
-        return genre;
+        genre.setName(name);
+        genre.setDescription(description);
+        return genreRepository.save(genre);
     }
 
     @Override
-    public Optional<Genre> findById(Long id) {
-        return this.genreRepository.findById(id);
+    public Genre findById(Long id) {
+        return this.genreRepository.findById(id).orElseThrow(() -> new NotFoundException(id));
     }
 
     @Override

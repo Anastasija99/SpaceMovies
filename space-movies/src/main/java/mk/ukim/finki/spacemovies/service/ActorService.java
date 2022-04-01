@@ -3,6 +3,7 @@ package mk.ukim.finki.spacemovies.service;
 import mk.ukim.finki.spacemovies.model.Actor;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ActorService {
 

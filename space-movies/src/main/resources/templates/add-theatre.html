@@ -1,0 +1,36 @@
+<th:block xmlns="http://www.w3.org/1999/xhtml">
+    <div class="container">
+        <form action="/theatres/add" method="POST">
+            <input id="id" name="id" th:value="(${theatre} != null ? ${theatre.getId()} : '')" type="hidden">
+            <div class="mb-3">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" id="name" name="name"
+                       th:value="(${theatre} != null ? ${theatre.getName()} : '')"
+                       type="text">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="city">City</label>
+                <input class="form-control" id="city" name="city"
+                       th:value="(${theatre} != null ? ${theatre.getCity()} : '')"
+                       type="text">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="address">Address</label>
+                <input class="form-control" id="address" name="address"
+                       th:value="(${theatre} != null ? ${theatre.getAddress()} : '')"
+                       type="text">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="movieTheatreHalls">Theatre halls</label>
+                <input class="form-control" id="movieTheatreHalls" name="movieTheatreHalls"
+                       th:value="(${theatre} != null ? ${theatre.getMovieTheatreHalls()} : '')"
+                       type="number">
+            </div>
+
+            <button class="btn btn-primary" id="submit" type="submit">Submit</button>
+        </form>
+    </div>
+</th:block>

@@ -93,4 +93,9 @@ public class MovieServiceImplementation implements MovieService {
     public void deleteById(Long id) {
         this.movieRepository.deleteById(id);
     }
+
+    @Override
+    public List<Movie> getLatestMovies() {
+        return movieRepository.getLatestMovies();
+    }
 }

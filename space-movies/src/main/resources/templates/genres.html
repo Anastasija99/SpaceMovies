@@ -10,15 +10,46 @@
 </style>
 <body>
 <div class="d-grid gap-3">
-<h2 class="px-2">Genres</h2>
-<ul>
-    <li class="listItem p-3 border" th:each="genre: ${genres}">
-        <th:block th:text="${genre.name}"/>
-        (
-        <th:block th:text="${genre.description}"/>
-        )
-    </li>
-</ul>
+    <div class="container my-3">
+        <div class="row">
+            <div>
+                <h1 class="display-4 font-weight-bold">Genres</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="btn">
+                <a class="btn btn-block" href="/genres/add-genre" style="color: black; background-color: white">
+                    <i class="fa fa-plus"></i> Add new genre
+                </a>
+            </div>
+        </div>
+    </div>
+    <ul class="p-3">
+        <li class="listItem px-3 border" th:each="genre: ${genres}">
+            <th:block th:text="${genre.name}"/>
+            (
+            <th:block th:text="${genre.description}"/>
+            )
+            <div class="text-right">
+                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                    <form th:action="@{'/genres/delete/{name}' (name=${genre.getName()})}"
+                          th:method="DELETE">
+                        <button class="btn btn-sm btn-danger"
+                                type="submit">
+                            <i class="fa fa-trash"> </i> Delete
+                        </button>
+                    </form>
+                </th:block>
+                <th:block> <!-- sec:authorize="hasRole('ROLE_ADMIN')"-->
+                    <a class="btn btn-sm btn-info"
+                       style="color: white"
+                       th:href="@{'/genres/edit-genre/{id}' (id=${genre.getId()})}">
+                        <i class="fa fa-pencil-square-o"> </i> Edit
+                    </a>
+                </th:block>
+            </div>
+        </li>
+    </ul>
 </div>
 </body>
 </html>

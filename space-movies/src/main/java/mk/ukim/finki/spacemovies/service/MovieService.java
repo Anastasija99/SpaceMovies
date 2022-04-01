@@ -22,6 +22,8 @@ public interface MovieService {
 
     void deleteById(Long id);
 
+    List<Movie> getLatestMovies();
+
 //    TODO: ako ima vreme na kraj
 //    List<Movie> findAllByLanguage(String searchLanguage);
 //    List<Movie> findAllByGenre(String searchGenre);

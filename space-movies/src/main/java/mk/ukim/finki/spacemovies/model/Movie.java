@@ -7,6 +7,7 @@ import mk.ukim.finki.spacemovies.model.enumerations.LanguageEnum;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Movie model
@@ -21,6 +22,8 @@ public class Movie {
     private Long id;
 
     private String title;
+
+    private String url;
 
     private Integer duration;
 

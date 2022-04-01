@@ -1,0 +1,22 @@
+<th:block xmlns="http://www.w3.org/1999/xhtml">
+    <div class="container">
+        <form action="/genres/add" method="POST">
+            <input id="id" name="id" th:value="(${genre} != null ? ${genre.getId()} : '')" type="hidden">
+            <div class="mb-3">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" id="name" name="name"
+                       th:value="(${genre} != null ? ${genre.getName()} : '')"
+                       type="text">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <input class="form-control" id="description" name="description"
+                       th:value="(${genre} != null ? ${genre.getDescription()} : '')"
+                       type="text">
+            </div>
+
+            <button class="btn btn-primary" id="submit" type="submit">Submit</button>
+        </form>
+    </div>
+</th:block>

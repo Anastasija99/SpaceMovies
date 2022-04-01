@@ -4,6 +4,7 @@ import mk.ukim.finki.spacemovies.model.Genre;
 import mk.ukim.finki.spacemovies.model.Movie;
 import mk.ukim.finki.spacemovies.model.enumerations.LanguageEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,4 +23,7 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     List<Movie> findAllByLanguage(LanguageEnum language);
 
     List<Movie> findAllByGenre(Genre genre);
+
+    @Query(nativeQuery = true, value = "SELECT * FROM Movie m ORDER BY m.release_date DESC LIMIT 5")
+    List<Movie> getLatestMovies();
 }
