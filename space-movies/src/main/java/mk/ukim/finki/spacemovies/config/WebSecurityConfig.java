@@ -40,17 +40,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling().accessDeniedPage("/access-denied");
     }
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .withUser("user")
-//                .password(passwordEncoder.encode("user"))
-//                .authorities("ROLE_USER")
-//                .and()
-//                .withUser("admin")
-//                .password(passwordEncoder.encode("admin"))
-//                .authorities("ROLE_ADMIN");
-//    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
