@@ -19,7 +19,7 @@
                          th:src="${movie.getUrl()}"> <!--makeItOptional-->
                     <div class="carousel-caption d-none d-md-block">
                         <h5 th:text="${movie.getTitle()}"></h5>
-                        <p th:text="${movie.getGenre()}"></p>
+                        <p th:text="${movie.getGenre().name}"></p>
                         <p th:text="${movie.getReleaseDate()}"></p>
                     </div>
                 </div>
