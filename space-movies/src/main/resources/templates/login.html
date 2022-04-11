@@ -48,6 +48,7 @@
 
     .remember {
         color: white;
+        font-size: medium;
     }
 
     .remember input {
@@ -65,6 +66,7 @@
 
     .login_btn:hover {
         color: black !important;
+        font-weight: bold;
         background-color: white;
     }
 </style>
@@ -93,7 +95,7 @@
     <div class="container">
         <div class="d-flex justify-content-center h-100">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header pt-3 d-flex justify-content-center">
                     <h3>Sign In</h3>
                 </div>
                 <div class="card-body">
@@ -111,17 +113,17 @@
                             <input id="password" class="form-control" name="password" placeholder="password" type="password" required="">
                         </div>
                         <div th:if="${hasError}"></div>
-                        <div class="row align-items-center remember">
-                            <input type="checkbox">Remember Me
+                        <div class="row remember pt-2 pl-1">
+                            <input type="checkbox">Remember me
                         </div>
-                        <div class="form-group">
-                            <input class="btn float-right login_btn" type="submit" value="Login">
+                        <div class="form-group pt-4 d-flex justify-content-center">
+                              <input class="btn float-right login_btn" type="submit" value="Login">
                         </div>
                     </form>
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-center links">
-                        Don't have an account?<a href="/register">Sign Up</a>
+                        Don't have an account? <a href="/register"> Register here.</a>
                     </div>
                 </div>
             </div>
