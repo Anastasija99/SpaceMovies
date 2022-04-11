@@ -2,7 +2,9 @@ package mk.ukim.finki.spacemovies.web.controller;
 
 import mk.ukim.finki.spacemovies.model.InterestList;
 import mk.ukim.finki.spacemovies.model.Movie;
+import mk.ukim.finki.spacemovies.model.User;
 import mk.ukim.finki.spacemovies.service.InterestListService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -38,11 +40,12 @@ public class InterestListController {
     }
 
     @PostMapping("/add-movie/{id}")
-    public String addMovieToInterestList(@PathVariable Long id, HttpServletRequest req){
+    public String addMovieToInterestList(@PathVariable Long id, HttpServletRequest req, Authentication authentication){
 
         try {
-            String username = req.getRemoteUser();
-            InterestList interestList = this.interestListService.addMovieToInterestList(username, id);
+            User user = (User) authentication.getPrincipal();
+            String username = user.getUsername();
+            this.interestListService.addMovieToInterestList(username, id);
 
             return "redirect:/interest-list";
         } catch (RuntimeException exception) {
