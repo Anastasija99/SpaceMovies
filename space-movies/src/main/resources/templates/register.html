@@ -12,11 +12,12 @@
     }
 
     .card{
-        height: 370px;
+        /*height: 370px;*/
         margin-top: auto;
         margin-bottom: auto;
-        width: 400px;
+        width: 33%;
         background-color: rgba(0,0,0,0.5) !important;
+        padding: 1%;
     }
 
     .social_icon span{
@@ -36,8 +37,8 @@
 
     .input-group-prepend span{
         width: 50px;
-        background-color: #fbf5ec;
-        color: black;
+        background-color: #FFC312;
+        color: rgba(0, 0, 0, 0.5);
         border:0 !important;
     }
 
@@ -46,13 +47,13 @@
         box-shadow: 0 0 0 0 !important;
     }
 
-    .remember input
-    {
-        width: 20px;
-        height: 20px;
-        margin-left: 15px;
-        margin-right: 5px;
-    }
+    /*.remember input*/
+    /*{*/
+    /*    width: 20px;*/
+    /*    height: 20px;*/
+    /*    margin-left: 15px;*/
+    /*    margin-right: 5px;*/
+    /*}*/
 
     .register_btn {
         color: white !important;
@@ -90,24 +91,14 @@
     <div class="container">
         <div class="d-flex justify-content-center h-100">
             <div class="card">
-                <div class="container">
-                    <h1 th:if="${hasError}" th:text="${error}"></h1>
-                </div>
-                <div class="card-header">
+                <div class="card-header pt-3 d-flex justify-content-center">
                     <h3>Register</h3>
                 </div>
                 <div class="card-body">
                     <form method="post" action="/register">
-<!--                        <div class="input-group form-group">-->
-<!--                            <div class="input-group-prepend">-->
-<!--                                <span class="input-group-text"><i class="fas fa-user"></i></span>-->
-<!--                            </div>-->
-<!--                            <input type="email" class="form-control" placeholder="email" name="username">-->
-
-<!--                        </div>-->
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <span class="input-group-text pl-3"><i class="fas fa-user"></i></span>
                             </div>
                             <input type="text"
                                    id="username"
@@ -120,7 +111,7 @@
 
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                <span class="input-group-text pl-3"><i class="fas fa-key"></i></span>
                             </div>
                             <input type="password"
                                    class="form-control"
@@ -133,7 +124,7 @@
 
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                <span class="input-group-text pl-3"><i class="fas fa-key"></i></span>
                             </div>
                             <input type="password"
                                    class="form-control"
@@ -146,7 +137,7 @@
 
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                <span class="input-group-text pl-3"><i class="fa-solid fa-user-gear"></i></span>
                             </div>
                             <input type="text"
                                    class="form-control"
@@ -159,7 +150,7 @@
 
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                <span class="input-group-text pl-3"><i class="fa-solid fa-user-gear"></i></span>
                             </div>
                             <input type="text"
                                    class="form-control"
@@ -170,28 +161,30 @@
                             >
                         </div>
 
-                        <br>
-
-                        <p>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="role" type="radio" id="ROLE_ADMIN" value="ROLE_ADMIN">
-                            <label class="form-check-label" for="ROLE_ADMIN">ROLE_ADMIN</label>
+                        <div class="input-group form-group" style="color: white">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="role" type="radio" id="ROLE_ADMIN" value="ROLE_ADMIN">
+                                <label class="form-check-label" for="ROLE_ADMIN">ADMIN</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="role"  type="radio" id="ROLE_USER" value="ROLE_USER">
+                                <label class="form-check-label" for="ROLE_USER">USER</label>
+                            </div>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="role"  type="radio" id="ROLE_USER" value="ROLE_USER">
-                            <label class="form-check-label" for="ROLE_USER">ROLE_USER</label>
+                        <div class="container">
+                            <h1 th:if="${hasError}" th:text="${error}"></h1>
                         </div>
-                        </p>
-
-                        <br>
-
-                        <div class="form-group">
-                            <input type="submit" value="Register" class="btn float-right register_btn">
+                        <div class="form-group d-flex justify-content-center">
+                            <input type="submit" value="Register" class="btn register_btn">
                         </div>
+
                     </form>
                 </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links">
+                        Already have an account?<a href="/login"> Login here!</a>
+                    </div>
                 </div>
-            <a href="/login" class="btn btn-block btn-light">Already have an account? Login here!</a>
             </div>
         </div>
     </div>
