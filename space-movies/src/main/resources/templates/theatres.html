@@ -5,7 +5,7 @@
                 <h1 class="display-3 p-5 font-weight-bold">Movie Theatres</h1>
             </div>
         </div>
-        <div class="row">
+        <div class="row" sec:authorize="hasRole('ROLE_ADMIN')">
             <div class="btn">
                 <a class="btn btn-block" href="/theatres/add-theatre" style="color: black; background-color: white">
                     <i class="fa fa-plus"></i> Add new theatre
