@@ -22,10 +22,15 @@
                         <tr>
                             <th scope="col"></th>
                             <th scope="col">Title</th>
+                            <th scope="col">Duration</th>
+                            <th scope="col">Release Date</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Genre</th>
+                            <th scope="col">Description</th>
                             <th scope="col">Language</th>
-                            <!--                            <th scope="col">Theatres</th>-->
+                            <th scope="col">Genre</th>
+                            <th scope="col">Actors</th>
+                            <th scope="col">Theatres</th>
+
                             <th scope="col"></th>
                         </tr>
                         </thead>
@@ -40,10 +45,24 @@
                                 </form>
                             </td>
                             <td th:text="${movie.getTitle()}"></td>
+                            <td th:text="${movie.getDuration()}"></td>
+                            <td th:text="${movie.getReleaseDate()}"></td>
                             <td th:text="${movie.getPrice()}"></td>
-                            <td th:text="${movie.getGenre() != null} ? ${movie.genre.name} : ''"></td>
+                            <td th:text="${movie.getDescription()}"></td>
                             <td th:text="${movie.getLanguage() != null} ? ${movie.language} : ''"></td>
-                            <!--                            <td th:text="${movie.getTheatres() != null} ? ${movie.getTheatres().getName()} : 'No Theatres available'"></td>-->
+                            <td th:text="${movie.getGenre() != null} ? ${movie.genre.name} : ''"></td>
+                            <td>
+                                <div>
+                                    <span th:each="actor,iterStat : ${movie.getActors()}"
+                                          th:text="${actor.firstName} + ${!iterStat.last ? ', ' : ''}"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span th:each="theatre,iterStat : ${movie.getTheatres()}"
+                                          th:text="${theatre.name} + ${!iterStat.last ? ', ' : ''}"></span>
+                                </div>
+                            </td>
                             <td class="text-right">
                                 <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                                     <form th:action="@{'/movies/delete/{id}' (id=${movie.getId()})}"
