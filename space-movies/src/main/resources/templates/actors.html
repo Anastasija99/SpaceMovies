@@ -1,96 +1,60 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Actors</title>
-    <meta charset="utf-8"/>
-</head>
-<body>
-<div class="container my-3">
-    <div class="row">
-        <div>
-            <h1 class="display-4 font-weight-bold">Actors</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="btn">
-            <a class="btn btn-block" href="/actors/add-actor" style="color: black; background-color: white">
-                <i class="fa fa-plus"></i> Add new actor
-            </a>
-        </div>
-    </div>
-</div>
-<div class="container pb-3 pt-1">
-    <div class="row">
-        <div class="col-6">
-            <form id="filter-actors-name">
-                <div class="row">
-                    <div class="col-6">
-                        <label for="firstname"><small>Firstname</small></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <input class="form-control" id="firstname" name="firstname" placeholder="Search by firstname"
-                               type="text">
-                    </div>
-                    <div class="col-1">
-                        <button class="btn" id="filter-name" type="submit"><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="col-6">
-            <form id="filter-actors-country">
-                <div class="row">
-                    <div class="col-6">
-                        <label for="country"><small>Country</small></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <input class="form-control" id="country" name="country" placeholder="Search by country"
-                               type="text">
-                    </div>
-                    <div class="col-1">
-                        <button class="btn" id="filter-country" type="submit"><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-
-<div class="container py-3">
-    <ul style="list-style-type: none">
-        <li th:each="actor: ${actors}">
-            <h5>
-                <th:block th:text="${actor.firstName}"/>
-                <th:block th:text="${actor.lastName}"/>
-                <small class="text-secondary">
-                    <th:block th:text="${actor.age}"/>years
-                    <th:block th:text="${actor.countryOfOrigin}"/>
-                </small>
-            </h5>
-            <div class="text-right">
-                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
-                    <form th:action="@{'/actors/delete/{id}' (id=${actor.getId()})}"
-                          th:method="DELETE">
-                        <button class="btn btn-sm btn-danger"
-                                type="submit">
-                            <i class="fa fa-trash"> </i> Delete
-                        </button>
-                    </form>
-                </th:block>
-                <th:block> <!-- sec:authorize="hasRole('ROLE_ADMIN')"-->
-                    <a class="btn btn-sm btn-info"
-                       style="color: white"
-                       th:href="@{'/actors/edit-actor/{id}' (id=${actor.getId()})}">
-                        <i class="fa fa-pencil-square-o"> </i> Edit
-                    </a>
-                </th:block>
+<div xmlns:th="http://www.thymeleaf.org">
+    <div class="container my-3">
+        <div class="row">
+            <div>
+                <h1 class="display-3 p-5 font-weight-bold">Actors</h1>
             </div>
-        </li>
-    </ul>
+        </div>
+        <div class="row">
+            <div class="btn">
+                <a class="btn btn-block" href="/actors/add-actor" style="color: black; background-color: white">
+                    <i class="fa fa-plus"></i> Add new actor
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">First name</th>
+                            <th scope="col">Last name</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Country of Origin</th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody th:each="actor : ${actors}">
+                            <td th:text="${actor.getFirstName()}"></td>
+                            <td th:text="${actor.getLastName()}"></td>
+                            <td th:text="${actor.getAge()}"></td>
+                            <td th:text="${actor.getCountryOfOrigin()}"></td>
+                            <td class="text-right">
+                                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <form th:action="@{'/actors/delete/{id}' (id=${actor.getId()})}"
+                                          th:method="DELETE">
+                                        <button class="btn btn-sm btn-danger"
+                                                type="submit">
+                                            <i class="fa fa-trash"> </i> Delete
+                                        </button>
+                                    </form>
+                                </th:block>
+                                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <a class="btn btn-sm btn-info"
+                                       style="color: white"
+                                       th:href="@{'/actors/edit-actor/{id}' (id=${actor.getId()})}">
+                                        <i class="fa fa-pencil-square-o"> </i> Edit
+                                    </a>
+                                </th:block>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-</body>
-</html>

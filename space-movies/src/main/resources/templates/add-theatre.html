@@ -1,5 +1,5 @@
 <th:block xmlns="http://www.w3.org/1999/xhtml">
-    <div class="container">
+    <div class="container" style="padding: 20px 0 20px 0">
         <form action="/theatres/add" method="POST">
             <input id="id" name="id" th:value="(${theatre} != null ? ${theatre.getId()} : '')" type="hidden">
             <div class="mb-3">

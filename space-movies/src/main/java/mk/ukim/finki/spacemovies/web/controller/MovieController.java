@@ -107,9 +107,9 @@ public class MovieController {
     ) {
 //        Genre genre = this.genreService.findById(id);
         if (id != null) {
-            this.movieService.edit(id, title, duration, LocalDate.parse(releaseDate), price, description, language, genre, theatres, actors);
+            this.movieService.edit(id, title, duration, LocalDate.parse(releaseDate), price, description, language, genre, actors, theatres);
         } else {
-            this.movieService.save(title, duration, LocalDate.parse(releaseDate), price, description, language, genre, theatres, actors);
+            this.movieService.save(title, duration, LocalDate.parse(releaseDate), price, description, language, genre, actors, theatres);
         }
         return "redirect:/movies";
     }
