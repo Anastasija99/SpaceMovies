@@ -1,7 +1,7 @@
 <th:block xmlns:th="http://www.thymeleaf.org">
         <div class="row d-flex justify-content-center">
             <h2 class="display-5 font-weight-bold py-5">Interest list for
-                <th:block th:if="${#request.getRemoteUser() != null}" th:text="${#request.getRemoteUser()}"></th:block>
+                <th:block th:if="${#request.getRemoteUser() != null}" th:text="${#authentication.getPrincipal().getFirstName()}"></th:block>
             </h2>
         </div>
 
