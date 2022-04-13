@@ -5,7 +5,7 @@
                 <h1 class="display-3 p-5 font-weight-bold">Latest movies</h1>
             </div>
         </div>
-        <div class="row">
+        <div class="row" sec:authorize="hasRole('ROLE_ADMIN')">
             <div class="btn">
                 <a class="btn btn-block" href="/movies/add-movie" style="color: black; background-color: white">
                     <i class="fa fa-plus"></i> Add new movie
@@ -32,10 +32,10 @@
                         <tbody>
                         <tr class="interestList-item" th:each="movie : ${movies}">
                             <td>
-                                <form th:action="@{'/movies/add'}"
-                                      th:method="POST">
-                                    <button class="btn btn-sm btn-primary"
-                                            type="submit"><i class="fa fa-plus"></i> Add to my<br>interest list
+                                <form th:action="@{'/interest-list/add-movie/{id}' (id=${movie.getId()})}"
+                                      th:method="POST" sec:authorize="hasRole('ROLE_USER')">
+                                    <button class="btn btn-sm btn-primary" type="submit">
+                                        <i class="fa fa-plus"></i> Add to my<br>interest list
                                     </button>
                                 </form>
                             </td>
@@ -54,7 +54,7 @@
                                         </button>
                                     </form>
                                 </th:block>
-                                <th:block> <!-- sec:authorize="hasRole('ROLE_ADMIN')"-->
+                                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                                     <a class="btn btn-sm btn-info"
                                        style="color: white"
                                        th:href="@{'/movies/edit-movie/{id}' (id=${movie.getId()})}">
