@@ -33,6 +33,7 @@
                                 <form th:action="@{'/genres/delete/{name}' (name=${genre.getName()})}"
                                       th:method="DELETE">
                                     <button class="btn btn-sm btn-danger"
+                                            style="width: 80px"
                                             type="submit">
                                         <i class="fa fa-trash"> </i> Delete
                                     </button>

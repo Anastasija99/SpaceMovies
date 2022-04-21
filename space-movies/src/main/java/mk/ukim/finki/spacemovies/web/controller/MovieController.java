@@ -52,7 +52,6 @@ public class MovieController {
         return "masterSkeleton";
     }
 
-    // TODO: editMovie, saveMovie, deleteMovie, addMovie
     @DeleteMapping("delete/{id}")
     public String deleteMovie(@PathVariable Long id) {
         this.movieService.deleteById(id);
@@ -103,13 +102,13 @@ public class MovieController {
             @RequestParam String releaseDate,
             @RequestParam List<Long> actors,
             @RequestParam List<Long> theatres,
-            @RequestParam LanguageEnum language
+            @RequestParam LanguageEnum language,
+            @RequestParam String url
     ) {
-//        Genre genre = this.genreService.findById(id);
         if (id != null) {
-            this.movieService.edit(id, title, duration, LocalDate.parse(releaseDate), price, description, language, genre, actors, theatres);
+            this.movieService.edit(id, title, duration, LocalDate.parse(releaseDate), price, description, language, genre, actors, theatres, url);
         } else {
-            this.movieService.save(title, duration, LocalDate.parse(releaseDate), price, description, language, genre, actors, theatres);
+            this.movieService.save(title, duration, LocalDate.parse(releaseDate), price, description, language, genre, actors, theatres, url);
         }
         return "redirect:/movies";
     }

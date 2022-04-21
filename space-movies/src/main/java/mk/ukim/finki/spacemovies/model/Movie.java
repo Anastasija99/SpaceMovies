@@ -7,7 +7,6 @@ import mk.ukim.finki.spacemovies.model.enumerations.LanguageEnum;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Movie model
@@ -46,7 +45,7 @@ public class Movie {
     @ManyToMany
     private List<MovieTheatre> theatres;
 
-    public Movie(String title, Integer duration, LocalDate releaseDate, Float price, String description, LanguageEnum language, Genre genre, List<Actor> actors, List<MovieTheatre> theatres) {
+    public Movie(String title, Integer duration, LocalDate releaseDate, Float price, String description, LanguageEnum language, Genre genre, List<Actor> actors, List<MovieTheatre> theatres, String url) {
         this.title = title;
         this.duration = duration;
         this.releaseDate = releaseDate;
@@ -56,5 +55,6 @@ public class Movie {
         this.genre = genre;
         this.actors = actors;
         this.theatres = theatres;
+        this.url = url;
     }
 }

@@ -16,9 +16,9 @@ public interface MovieService {
 
     Optional<Movie> findByTitle(String title);
 
-    Optional<Movie> save(String title, Integer duration, LocalDate releaseDate, Float price, String description, LanguageEnum language, Long genre, List<Long> actors, List<Long> theatres);
+    Optional<Movie> save(String title, Integer duration, LocalDate releaseDate, Float price, String description, LanguageEnum language, Long genre, List<Long> actors, List<Long> theatres, String url);
 
-    Optional<Movie> edit(Long id, String title, Integer duration, LocalDate releaseDate, Float price, String description, LanguageEnum language, Long genre, List<Long> actors, List<Long> theatres);
+    Optional<Movie> edit(Long id, String title, Integer duration, LocalDate releaseDate, Float price, String description, LanguageEnum language, Long genre, List<Long> actors, List<Long> theatres, String url);
 
     void deleteById(Long id);
 

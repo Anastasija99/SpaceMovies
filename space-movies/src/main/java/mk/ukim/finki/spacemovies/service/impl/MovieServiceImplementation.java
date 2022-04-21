@@ -51,7 +51,7 @@ public class MovieServiceImplementation implements MovieService {
     @Override
     @Transactional
     public Optional<Movie> save(String title, Integer duration, LocalDate releaseDate, Float price, String description,
-                                LanguageEnum language, Long genreId, List<Long> actorsIds, List<Long> theatresIds) {
+                                LanguageEnum language, Long genreId, List<Long> actorsIds, List<Long> theatresIds, String url) {
 
         Genre genre = this.genreRepository.findById(genreId).orElseThrow(() -> new NotFoundException(genreId));
 
@@ -61,7 +61,7 @@ public class MovieServiceImplementation implements MovieService {
 
         this.movieRepository.deleteByTitle(title);
 
-        Movie movie = new Movie(title, duration, releaseDate, price, description, language, genre, actors, theatres);
+        Movie movie = new Movie(title, duration, releaseDate, price, description, language, genre, actors, theatres, url);
 
         return Optional.of(this.movieRepository.save(movie));
     }
@@ -69,7 +69,7 @@ public class MovieServiceImplementation implements MovieService {
     @Override
     public Optional<Movie> edit(Long id, String title, Integer duration, LocalDate releaseDate, Float price,
                                 String description, LanguageEnum language, Long genreId, List<Long> actorsIds,
-                                List<Long> theatresIds) {
+                                List<Long> theatresIds, String url) {
 
         Movie movie = this.movieRepository.findById(id).orElseThrow(() -> new NotFoundException(id));
 

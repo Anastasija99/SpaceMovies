@@ -1,5 +1,5 @@
 <th:block xmlns="http://www.w3.org/1999/xhtml">
-    <div class="container" style="padding: 20px 0 20px 0">
+    <div class="container" style="padding: 20px 0 20px 0; width: 33%">
         <form action="/actors/add" method="POST">
             <input id="id" name="id" th:value="(${actor} != null ? ${actor.getId()} : '')" type="hidden">
             <div class="mb-3">
@@ -8,7 +8,7 @@
                        th:value="(${actor} != null ? ${actor.getFirstName()} : '')"
                        type="text">
             </div>
-<!--width 33%-->
+            <!--width 33%-->
             <div class="mb-3">
                 <label class="form-label" for="lastName">Last name</label>
                 <input class="form-control" id="lastName" name="lastName"

@@ -1,5 +1,5 @@
 <th:block xmlns="http://www.w3.org/1999/xhtml">
-    <div class="container" style="padding: 20px 0 20px 0">
+    <div class="container" style="padding: 20px 0 20px 0; width: 33%">
         <form action="/movies/add" method="POST">
             <input id="id" name="id" th:value="(${movies} != null ? ${movies.getId()} : '')" type="hidden">
             <div class="mb-3">
@@ -46,14 +46,14 @@
             <div class="form-group">
                 <label for="genre">Genres</label>
                 <select class="form-control" id="genre" name="genre">
-                    <option th:if="${movies} != null"
+                    <option th:each="genre : ${genres}"
+                            th:if="${movies} != null"
                             th:selected="${movies.getGenre() != null && movies.getGenre().getId() == genre.getId()}"
-                            th:each="genre : ${genres}"
                             th:text="${genre.getName()}"
                             th:value="${genre.getId()}">
                     </option>
-                    <option th:if="${movies} == null"
-                            th:each="genre : ${genres}"
+                    <option th:each="genre : ${genres}"
+                            th:if="${movies} == null"
                             th:text="${genre.getName()}"
                             th:value="${genre.getId()}">
                     </option>
@@ -62,15 +62,15 @@
 
             <div class="form-group">
                 <label for="theatres">Theatres</label>
-                <select class="form-control" id="theatres" name="theatres" multiple="multiple">
-                    <option th:if="${movies} != null"
-                            th:each="theatre : ${theatres}"
+                <select class="form-control" id="theatres" multiple="multiple" name="theatres">
+                    <option th:each="theatre : ${theatres}"
+                            th:if="${movies} != null"
                             th:selected="${movies.getTheatres() != null && movies.getTheatres().contains(theatre)}"
                             th:text="${theatre.getName()}"
                             th:value="${theatre.getId()}">
                     </option>
-                    <option  th:if="${movies} == null"
-                             th:each="theatre : ${theatres}"
+                    <option th:each="theatre : ${theatres}"
+                            th:if="${movies} == null"
                             th:text="${theatre.getName()}"
                             th:value="${theatre.getId()}">
                     </option>
@@ -79,19 +79,25 @@
 
             <div class="form-group">
                 <label for="actors">Actors</label>
-                <select class="form-control" id="actors" name="actors"  multiple="multiple">
-                    <option th:if="${movies} != null"
-                            th:each="actor : ${actors}"
+                <select class="form-control" id="actors" multiple="multiple" name="actors">
+                    <option th:each="actor : ${actors}"
+                            th:if="${movies} != null"
                             th:selected="${movies.getActors() != null && movies.getActors().contains(actor)}"
                             th:text="${actor.getFirstName()}"
                             th:value="${actor.getId()}">
                     </option>
-                    <option th:if="${movies} == null"
-                            th:each="actor : ${actors}"
+                    <option th:each="actor : ${actors}"
+                            th:if="${movies} == null"
                             th:text="${actor.getFirstName()}"
                             th:value="${actor.getId()}">
                     </option>
                 </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="url">Url</label>
+                <input class="form-control" id="url" name="url"
+                       th:value="(${movies} != null ? ${movies.getUrl()} : '')"
+                       type="text">
             </div>
 
             <button class="btn btn-primary" id="submit" type="submit">Submit</button>

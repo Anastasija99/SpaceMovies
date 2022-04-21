@@ -37,8 +37,8 @@
                         <tbody>
                         <tr class="interestList-item" th:each="movie : ${movies}">
                             <td>
-                                <form th:action="@{'/interest-list/add-movie/{id}' (id=${movie.getId()})}"
-                                      th:method="POST" sec:authorize="hasRole('ROLE_USER')">
+                                <form sec:authorize="hasRole('ROLE_USER')"
+                                      th:action="@{'/interest-list/add-movie/{id}' (id=${movie.getId()})}" th:method="POST">
                                     <button class="btn btn-sm btn-primary" type="submit">
                                         <i class="fa fa-plus"></i> Add to my<br>interest list
                                     </button>
@@ -68,7 +68,9 @@
                                     <form th:action="@{'/movies/delete/{id}' (id=${movie.getId()})}"
                                           th:method="DELETE">
                                         <button class="btn btn-sm btn-danger"
-                                                type="submit">
+                                                style="width: 80px"
+                                                type="submit"
+                                        >
                                             <i class="fa fa-trash"> </i> Delete
                                         </button>
                                     </form>
