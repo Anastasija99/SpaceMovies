@@ -35,7 +35,6 @@
             <div class="form-group">
                 <label for="language">Language</label>
                 <select class="form-control" id="language" name="language">
-                    <option hidden selected>Choose the movie's language</option>
                     <option th:each="language : ${languages}"
                             th:selected="${movie != null ? movie.language.toString().equals(language.toString()) : null}"
                             th:text="${language}"
