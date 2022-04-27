@@ -11,24 +11,31 @@
                 <label class="form-label" for="title">Title</label>
                 <input class="form-control" id="title" name="title"
                        th:value="(${movies} != null ? ${movies.getTitle()} : '')"
-                       type="text">
+                       type="text"
+                       placeholder="Enter the movie's title here."
+                >
             </div>
             <div class="mb-3">
                 <label class="form-label" for="description">Description</label>
                 <input class="form-control" id="description" name="description"
                        th:value="(${movies} != null ? ${movies.getDescription()} : '')"
-                       type="text">
+                       type="text"
+                       placeholder="Enter the movie's description here."
+                >
             </div>
             <div class="mb-3">
                 <label class="form-label" for="duration">Duration</label>
                 <input class="form-control" id="duration" name="duration"
                        th:value="(${movies} != null ? ${movies.getDuration()} : '')"
-                       type="text">
+                       type="text"
+                       placeholder="Enter the movie's duration here."
+                >
             </div>
 
             <div class="form-group">
                 <label for="language">Language</label>
                 <select class="form-control" id="language" name="language">
+                    <option hidden selected>Choose the movie's language</option>
                     <option th:each="language : ${languages}"
                             th:selected="${movie != null ? movie.language.toString().equals(language.toString()) : null}"
                             th:text="${language}"
@@ -40,13 +47,16 @@
                 <label class="form-label" for="price">Price</label>
                 <input class="form-control" id="price" name="price"
                        th:value="(${movies} != null ? ${movies.getPrice()} : '')"
-                       type="text">
+                       type="text"
+                       placeholder="Enter the movie's price here.">
             </div>
             <div class="mb-3">
                 <label class="form-label" for="releaseDate">Release Date</label>
                 <input class="form-control" id="releaseDate" name="releaseDate"
                        th:value="(${movies} != null ? ${movies.getReleaseDate()} : '')"
-                       type="date">
+                       type="date"
+                       placeholder="Enter the movie's release date here."
+                >
             </div>
             <div class="form-group">
                 <label for="genre">Genres</label>
@@ -102,7 +112,9 @@
                 <label class="form-label" for="url">Url</label>
                 <input class="form-control" id="url" name="url"
                        th:value="(${movies} != null ? ${movies.getUrl()} : '')"
-                       type="text">
+                       type="text"
+                       placeholder="Enter the movie's url here."
+                >
             </div>
 
             <button class="btn btn-primary" id="submit" type="submit">Submit</button>

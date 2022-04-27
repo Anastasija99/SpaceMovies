@@ -11,28 +11,36 @@
                 <label class="form-label" for="name">Name</label>
                 <input class="form-control" id="name" name="name"
                        th:value="(${theatre} != null ? ${theatre.getName()} : '')"
-                       type="text">
+                       type="text"
+                       placeholder="Enter the theatre's name here."
+                >
             </div>
 
             <div class="mb-3">
                 <label class="form-label" for="city">City</label>
                 <input class="form-control" id="city" name="city"
                        th:value="(${theatre} != null ? ${theatre.getCity()} : '')"
-                       type="text">
+                       type="text"
+                       placeholder="Enter the theatre's city here."
+                >
             </div>
 
             <div class="mb-3">
                 <label class="form-label" for="address">Address</label>
                 <input class="form-control" id="address" name="address"
                        th:value="(${theatre} != null ? ${theatre.getAddress()} : '')"
-                       type="text">
+                       type="text"
+                       placeholder="Enter the theatre's address here."
+                >
             </div>
 
             <div class="mb-3">
                 <label class="form-label" for="movieTheatreHalls">Theatre halls</label>
                 <input class="form-control" id="movieTheatreHalls" name="movieTheatreHalls"
                        th:value="(${theatre} != null ? ${theatre.getMovieTheatreHalls()} : '')"
-                       type="number">
+                       type="number"
+                       placeholder="Enter the theatre's number of halls here."
+                >
             </div>
 
             <button class="btn btn-primary" id="submit" type="submit">Submit</button>
