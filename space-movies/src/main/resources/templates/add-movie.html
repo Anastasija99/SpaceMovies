@@ -1,122 +1,132 @@
 <th:block xmlns="http://www.w3.org/1999/xhtml">
-    <a type="button" class="btn text-danger font-weight-bold float-right" style="margin-right: 33%; margin-top:1%"
+    <a type="button" class="btn text-danger font-weight-bold float-right" style="margin-right: 2%; margin-top:1%"
        href="/movies">
         <i class="fa fa-times" aria-hidden="true"></i>
         Exit form
     </a>
-    <div class="container" style="padding: 40px 0 20px 0; width: 33%">
+    <div class="container" style="padding-top: 20px; margin: auto; width: 80%;">
         <form action="/movies/add" method="POST">
-            <input id="id" name="id" th:value="(${movies} != null ? ${movies.getId()} : '')" type="hidden">
-            <div class="mb-3">
-                <label class="form-label" for="title">Title</label>
-                <input class="form-control" id="title" name="title"
-                       th:value="(${movies} != null ? ${movies.getTitle()} : '')"
-                       type="text"
-                       placeholder="Enter the movie's title here."
-                >
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="description">Description</label>
-                <input class="form-control" id="description" name="description"
-                       th:value="(${movies} != null ? ${movies.getDescription()} : '')"
-                       type="text"
-                       placeholder="Enter the movie's description here."
-                >
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="duration">Duration</label>
-                <input class="form-control" id="duration" name="duration"
-                       th:value="(${movies} != null ? ${movies.getDuration()} : '')"
-                       type="text"
-                       placeholder="Enter the movie's duration here."
-                >
-            </div>
 
-            <div class="form-group">
-                <label for="language">Language</label>
-                <select class="form-control" id="language" name="language">
-                    <option th:each="language : ${languages}"
-                            th:selected="${movie != null ? movie.language.toString().equals(language.toString()) : null}"
-                            th:text="${language}"
-                            th:value="${language}">
-                    </option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="price">Price</label>
-                <input class="form-control" id="price" name="price"
-                       th:value="(${movies} != null ? ${movies.getPrice()} : '')"
-                       type="text"
-                       placeholder="Enter the movie's price here.">
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="releaseDate">Release Date</label>
-                <input class="form-control" id="releaseDate" name="releaseDate"
-                       th:value="(${movies} != null ? ${movies.getReleaseDate()} : '')"
-                       type="date"
-                       placeholder="Enter the movie's release date here."
-                >
-            </div>
-            <div class="form-group">
-                <label for="genre">Genres</label>
-                <select class="form-control" id="genre" name="genre">
-                    <option th:each="genre : ${genres}"
-                            th:if="${movies} != null"
-                            th:selected="${movies.getGenre() != null && movies.getGenre().getId() == genre.getId()}"
-                            th:text="${genre.getName()}"
-                            th:value="${genre.getId()}">
-                    </option>
-                    <option th:each="genre : ${genres}"
-                            th:if="${movies} == null"
-                            th:text="${genre.getName()}"
-                            th:value="${genre.getId()}">
-                    </option>
-                </select>
-            </div>
+            <div class="row">
+                <div class="col-6">
+                    <input id="id" name="id" th:value="(${movies} != null ? ${movies.getId()} : '')" type="hidden">
+                    <div class="mb-3">
+                        <label class="form-label" for="title">Title</label>
+                        <input class="form-control" id="title" name="title"
+                               th:value="(${movies} != null ? ${movies.getTitle()} : '')"
+                               type="text"
+                               placeholder="Enter the movie's title here."
+                        >
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="description">Description</label>
+                        <input class="form-control" id="description" name="description"
+                               th:value="(${movies} != null ? ${movies.getDescription()} : '')"
+                               type="text"
+                               placeholder="Enter the movie's description here."
+                        >
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="duration">Duration</label>
+                        <input class="form-control" id="duration" name="duration"
+                               th:value="(${movies} != null ? ${movies.getDuration()} : '')"
+                               type="text"
+                               placeholder="Enter the movie's duration here."
+                        >
+                    </div>
 
-            <div class="form-group">
-                <label for="theatres">Theatres</label>
-                <select class="form-control" id="theatres" multiple="multiple" name="theatres">
-                    <option th:each="theatre : ${theatres}"
-                            th:if="${movies} != null"
-                            th:selected="${movies.getTheatres() != null && movies.getTheatres().contains(theatre)}"
-                            th:text="${theatre.getName()}"
-                            th:value="${theatre.getId()}">
-                    </option>
-                    <option th:each="theatre : ${theatres}"
-                            th:if="${movies} == null"
-                            th:text="${theatre.getName()}"
-                            th:value="${theatre.getId()}">
-                    </option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="language">Language</label>
+                        <select class="form-control" id="language" name="language">
+                            <option th:each="language : ${languages}"
+                                    th:selected="${movie != null ? movie.language.toString().equals(language.toString()) : null}"
+                                    th:text="${language}"
+                                    th:value="${language}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="price">Price</label>
+                        <input class="form-control" id="price" name="price"
+                               th:value="(${movies} != null ? ${movies.getPrice()} : '')"
+                               type="text"
+                               placeholder="Enter the movie's price here.">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="releaseDate">Release Date</label>
+                        <input class="form-control" id="releaseDate" name="releaseDate"
+                               th:value="(${movies} != null ? ${movies.getReleaseDate()} : '')"
+                               type="date"
+                               placeholder="Enter the movie's release date here."
+                        >
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <label for="actors">Actors</label>
-                <select class="form-control" id="actors" multiple="multiple" name="actors">
-                    <option th:each="actor : ${actors}"
-                            th:if="${movies} != null"
-                            th:selected="${movies.getActors() != null && movies.getActors().contains(actor)}"
-                            th:text="${actor.getFirstName()}"
-                            th:value="${actor.getId()}">
-                    </option>
-                    <option th:each="actor : ${actors}"
-                            th:if="${movies} == null"
-                            th:text="${actor.getFirstName()}"
-                            th:value="${actor.getId()}">
-                    </option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="url">Url</label>
-                <input class="form-control" id="url" name="url"
-                       th:value="(${movies} != null ? ${movies.getUrl()} : '')"
-                       type="text"
-                       placeholder="Enter the movie's url here."
-                >
-            </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="genre">Genres</label>
+                        <select class="form-control" id="genre" name="genre">
+                            <option th:each="genre : ${genres}"
+                                    th:if="${movies} != null"
+                                    th:selected="${movies.getGenre() != null && movies.getGenre().getId() == genre.getId()}"
+                                    th:text="${genre.getName()}"
+                                    th:value="${genre.getId()}">
+                            </option>
+                            <option th:each="genre : ${genres}"
+                                    th:if="${movies} == null"
+                                    th:text="${genre.getName()}"
+                                    th:value="${genre.getId()}">
+                            </option>
+                        </select>
+                    </div>
 
-            <button class="btn btn-primary" id="submit" type="submit">Submit</button>
+                    <div class="form-group">
+                        <label for="theatres">Theatres</label>
+                        <select class="form-control" id="theatres" multiple="multiple" name="theatres">
+                            <option th:each="theatre : ${theatres}"
+                                    th:if="${movies} != null"
+                                    th:selected="${movies.getTheatres() != null && movies.getTheatres().contains(theatre)}"
+                                    th:text="${theatre.getName()}"
+                                    th:value="${theatre.getId()}">
+                            </option>
+                            <option th:each="theatre : ${theatres}"
+                                    th:if="${movies} == null"
+                                    th:text="${theatre.getName()}"
+                                    th:value="${theatre.getId()}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="actors">Actors</label>
+                        <select class="form-control" id="actors" multiple="multiple" name="actors">
+                            <option th:each="actor : ${actors}"
+                                    th:if="${movies} != null"
+                                    th:selected="${movies.getActors() != null && movies.getActors().contains(actor)}"
+                                    th:text="${actor.getFirstName()}"
+                                    th:value="${actor.getId()}">
+                            </option>
+                            <option th:each="actor : ${actors}"
+                                    th:if="${movies} == null"
+                                    th:text="${actor.getFirstName()}"
+                                    th:value="${actor.getId()}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="url">Url</label>
+                        <input class="form-control" id="url" name="url"
+                               th:value="(${movies} != null ? ${movies.getUrl()} : '')"
+                               type="text"
+                               placeholder="Enter the movie's url here."
+                        >
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center" class="py-3">
+                <button class="btn btn-primary" id="submit" type="submit">Submit</button>
+
+            </div>
         </form>
     </div>
 </th:block>
