@@ -75,6 +75,14 @@
                             <th:block th:text="${movie.description}"/>
                         </small>
                     </div>
+                    <div class="row">
+                        <form sec:authorize="hasRole('ROLE_USER')"
+                              th:action="@{'/interest-list/add-movie/{id}' (id=${movie.getId()})}" th:method="POST">
+                            <button class="btn btn-sm btn-primary" type="submit">
+                                <i class="fa fa-plus"></i> Add to my interest list
+                            </button>
+                        </form>
+                    </div>
                 </li>
             </ul>
         </div>
