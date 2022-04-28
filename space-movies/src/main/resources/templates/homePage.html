@@ -5,17 +5,19 @@
     }
 </style>
 <div class="container">
-    <div class="bd-example">
+    <div class="py-2">
         <div class="carousel slide" data-ride="carousel" id="carouselExampleCaptions">
             <ol class="carousel-indicators">
                 <li class="active" data-slide-to="0" data-target="#carouselExampleCaptions"></li>
                 <li data-slide-to="1" data-target="#carouselExampleCaptions"></li>
                 <li data-slide-to="2" data-target="#carouselExampleCaptions"></li>
+                <li data-slide-to="3" data-target="#carouselExampleCaptions"></li>
+                <li data-slide-to="4" data-target="#carouselExampleCaptions"></li>
             </ol>
             <div class="carousel-inner">
                 <div th:class="${m.index}== 0  ? 'carousel-item active' : 'carousel-item'"
                      th:each="movie, m : ${latestMovies}">
-                    <img alt="..." class="d-block w-100"
+                    <img alt="..." class="d-block w-100" style="height: 25.75rem"
                          th:src="${movie.getUrl()}"> <!--makeItOptional-->
                     <div class="carousel-caption d-none d-md-block">
                         <h5 th:text="${movie.getTitle()}"></h5>
@@ -51,9 +53,9 @@
             </form>
         </div>
 
-        <div class="row">
+        <div class="row" style="overflow-x: scroll">
             <ul class="d-flex flex-row w-100" style="list-style-type: none;">
-                <li class="p-2 mx-4" style="float: left;" th:each="movie: ${movies}">
+                <li class="pr-5 mr-4" style="float: left;" th:each="movie: ${movies}">
                     <div class="row">
                         <h3>
                             <th:block th:text="${movie.title}"/>
