@@ -1,19 +1,28 @@
 <th:block xmlns="http://www.w3.org/1999/xhtml">
-    <div class="container" style="padding: 20px 0 20px 0; width: 33%">
+    <a type="button" class="btn text-danger font-weight-bold float-right" style="margin-right: 33%; margin-top:1%"
+       href="/genres">
+        <i class="fa fa-times" aria-hidden="true"></i>
+        Exit form
+    </a>
+    <div class="container" style="padding: 40px 0 20px 0; width: 33%">
         <form action="/genres/add" method="POST">
             <input id="id" name="id" th:value="(${genre} != null ? ${genre.getId()} : '')" type="hidden">
             <div class="mb-3">
                 <label class="form-label" for="name">Name</label>
                 <input class="form-control" id="name" name="name"
                        th:value="(${genre} != null ? ${genre.getName()} : '')"
-                       type="text">
+                       type="text"
+                       placeholder="Enter the genre's name here."
+                >
             </div>
 
             <div class="mb-3">
                 <label class="form-label" for="description">Description</label>
                 <input class="form-control" id="description" name="description"
                        th:value="(${genre} != null ? ${genre.getDescription()} : '')"
-                       type="text">
+                       type="text"
+                       placeholder="Enter the genre's description here."
+                >
             </div>
 
             <button class="btn btn-primary" id="submit" type="submit">Submit</button>

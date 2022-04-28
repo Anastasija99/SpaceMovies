@@ -57,6 +57,12 @@ public class MovieTheatreServiceImplementation implements MovieTheatreService {
     }
 
     @Override
+    public List<MovieTheatre> findByName(String name) {
+        return this.movieTheatreRepository.findAllByNameContaining(name);
+    }
+
+
+    @Override
     public void deleteById(Long id) {
         this.movieTheatreRepository.deleteById(id);
     }

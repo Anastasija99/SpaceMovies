@@ -13,4 +13,5 @@ import java.util.List;
 public interface MovieTheatreRepository extends JpaRepository<MovieTheatre, Long> {
 
     List<MovieTheatre> findAllByCityContaining(String city);
+    List<MovieTheatre> findAllByNameContaining(String name);
 }

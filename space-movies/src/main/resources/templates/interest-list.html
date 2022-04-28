@@ -10,27 +10,28 @@
     </div>
 
     <div class="container mb-4">
-        <div class="row">
-           <div class="col-12" th:if="${movies.size() > 0}">
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th scope="col">Title</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Genre</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="movie : ${movies}" class="interestList-item">
-                            <td th:text="${movie.getTitle()}"></td>
-                            <td th:text="${movie.getPrice()}"></td>
-                            <td th:text="${movie.getGenre() != null} ? ${movie.getGenre().getName()} : 'No Genre'"></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <div th:if="${movies.size() > 0}" class="row" style="display: flex; flex-wrap:wrap; align-content: flex-start;">
+               <div class="card bg-warning m-3" th:each="movie : ${movies}">
+                   <div class="card-header" th:text="${movie.getTitle()}" style="font-weight: bold"></div>
+                   <div class="card-body">
+                       <p class="card-text" th:text="${movie.getDescription()}"></p>
+                       <div>
+                          <b><p th:text="${movie.getGenre() != null} ? ${movie.genre.name} : ''"></p></b>
+                           <hr>
+                           <div>
+                               <p><b>You can watch it in: </b></p>
+                               <div th:each="theatre,iterStat : ${movie.getTheatres()}">
+                                   <small>
+                                       <b>
+                                           <th:block th:text="${theatre.city}"/>
+                                       </b>
+                                   </small>
+                                   <p th:text="${theatre.name} + ${!iterStat.last ? ', ' : ''}"></p>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
         </div>
     </div>
 </th:block>

@@ -2,7 +2,7 @@
     <div class="container my-3">
         <div class="row">
             <div>
-                <h1 class="display-3 p-5 font-weight-bold">Latest movies</h1>
+                <h1 class="display-3 pt-5 px-3 pb-2 font-weight-bold">Latest movies</h1>
             </div>
         </div>
         <div class="row" sec:authorize="hasRole('ROLE_ADMIN')">
@@ -40,7 +40,7 @@
                                 <form sec:authorize="hasRole('ROLE_USER')"
                                       th:action="@{'/interest-list/add-movie/{id}' (id=${movie.getId()})}" th:method="POST">
                                     <button class="btn btn-sm btn-primary" type="submit">
-                                        <i class="fa fa-plus"></i> Add to my<br>interest list
+                                        <i class="fa fa-plus"></i> Add to my interest list
                                     </button>
                                 </form>
                             </td>
