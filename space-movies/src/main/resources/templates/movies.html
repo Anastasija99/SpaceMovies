@@ -38,7 +38,8 @@
                         <tr class="interestList-item" th:each="movie : ${movies}">
                             <td>
                                 <form sec:authorize="hasRole('ROLE_USER')"
-                                      th:action="@{'/interest-list/add-movie/{id}' (id=${movie.getId()})}" th:method="POST">
+                                      th:action="@{'/interest-list/add-movie/{id}' (id=${movie.getId()})}"
+                                      th:method="POST">
                                     <button class="btn btn-sm btn-primary" type="submit">
                                         <i class="fa fa-plus"></i> Add to my interest list
                                     </button>
@@ -46,7 +47,7 @@
                             </td>
                             <td th:text="${movie.getTitle()}"></td>
                             <td th:text="${movie.getDuration()}"></td>
-                            <td th:text="${movie.getReleaseDate()}"></td>
+                            <td class="w-25" th:text="${movie.getReleaseDate()}"></td>
                             <td th:text="${movie.getPrice()}"></td>
                             <td th:text="${movie.getDescription()}"></td>
                             <td th:text="${movie.getLanguage() != null} ? ${movie.language} : ''"></td>
