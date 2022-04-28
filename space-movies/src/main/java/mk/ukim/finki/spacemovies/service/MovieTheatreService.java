@@ -13,6 +13,8 @@ public interface MovieTheatreService {
 
     List<MovieTheatre> findByCity(String city);
 
+    List<MovieTheatre> findByName(String name);
+
     void deleteById(Long id);
 
     MovieTheatre update(Long id, String name, String city, String address, Integer movieTheatreHalls);

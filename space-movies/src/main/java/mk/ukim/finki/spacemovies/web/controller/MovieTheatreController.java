@@ -20,7 +20,7 @@ public class MovieTheatreController {
     }
 
     @GetMapping
-    public String getMovieTheatresPage(@RequestParam(required = false) String error, String city, Model model) {
+    public String getMovieTheatresPage(@RequestParam(required = false) String error, @RequestParam(required = false)String city,@RequestParam(required = false)String name, Model model) {
         if (error != null && !error.isEmpty()) {
             model.addAttribute("hasError", true);
             model.addAttribute("error", error);
@@ -29,6 +29,9 @@ public class MovieTheatreController {
         List<MovieTheatre> theatreList = this.movieTheatreService.findAll();
         if (city != null) {
             theatreList = this.movieTheatreService.findByCity(city);
+        }
+        if (name !=null) {
+            theatreList = this.movieTheatreService.findByName(name);
         }
 
         model.addAttribute("theatres", theatreList);
