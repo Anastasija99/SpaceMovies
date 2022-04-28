@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/actors")
@@ -20,7 +19,7 @@ public class ActorController {
     }
 
     @GetMapping
-    public String getActorPage(Model model, String firstname, String country) {
+    public String getActorPage(Model model, @RequestParam(required = false)String firstname, @RequestParam(required = false)String country) {
         List<Actor> actorList = this.actorService.listActors();
         if (firstname != null) {
             actorList = this.actorService.searchActorsByName(firstname);
