@@ -85,6 +85,7 @@ public class MovieServiceImplementation implements MovieService {
         movie.setActors(actors);
         List<MovieTheatre> theatres = this.movieTheatreRepository.findAllById(theatresIds); //moze da se razmisli da ne bide tuka tuku vo drugoto
         movie.setTheatres(theatres);
+        movie.setUrl(url);
 
         return Optional.of(this.movieRepository.save(movie));
     }
