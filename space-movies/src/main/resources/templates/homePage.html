@@ -141,4 +141,76 @@
     </div>
     <br>
     <br>
+
+
 </div>
+
+<div class="container">
+    <div class="row">
+        <div id="top_x_div" style="width: 900px; height: 500px;"></div>
+    </div>
+</div>
+
+<script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
+
+<script th:inline="javascript" type="text/javascript">
+    /*<![CDATA[*/
+
+    var message = /*[[${theatres}]]*/ 'default';
+
+    google.charts.load('current', {'packages': ['bar']});
+    google.charts.load('current', {'packages':['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawStuff);
+
+    var colorList = [
+        '#ff7f50',
+        '#87cefa',
+        '#7dcfb6',
+        '#ff686b',
+        '#f18805',
+        '#f0a202',
+        '#3581b8',
+        '#ba55d3',
+        '#ffa69e',
+        '#256d1b',
+        '#ffcab1'
+    ];
+
+    function drawStuff() {
+        var theatres = new google.visualization.DataTable();
+        theatres.addColumn('string', 'Theatre name');
+
+        theatres.addColumn('number', 'Number of halls');
+
+        theatres.addColumn( { role: 'style' });
+
+        for (let i in message) {
+            theatres.addRow(
+                [message[i].name, message[i].movieTheatreHalls, `fill-color: ${colorList[i]}`]
+            );
+
+        }
+
+        var options = {
+            title: 'Movie theatres capacity',
+            width: 1000,
+            legend: {position: 'none'},
+            chart: {
+                title: 'Movie theatres capacity',
+            },
+            bars: 'horizontal',
+            axes: {
+                x: {
+                    0: {side: 'top', label: 'Number of halls'}
+                }
+            },
+            bar: {groupWidth: "90%"},
+            theme: 'material'
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('top_x_div'));
+        chart.draw(theatres, options);
+    }
+    google.charts.setOnLoadCallback(drawStuff);
+    /*]]>*/
+</script>

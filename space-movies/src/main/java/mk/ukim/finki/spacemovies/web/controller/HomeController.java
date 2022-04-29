@@ -29,15 +29,14 @@ public class HomeController {
     }
 
     @GetMapping
-    public String getHomePage(Model model, @RequestParam(required = false)String city, @RequestParam(required = false)Long genreId){
+    public String getHomePage(Model model, @RequestParam(required = false) String city, @RequestParam(required = false) Long genreId) {
 
         List<Movie> movieList = this.movieService.findAll();
         List<Genre> genreList = this.genreService.listGenres();
         List<MovieTheatre> theatreList = this.movieTheatreService.findAll();
-        if (city!=null){
+        if (city != null) {
             theatreList = this.movieTheatreService.findByCity(city);
-        }
-        else if (genreId!=null){
+        } else if (genreId != null) {
             movieList = this.movieService.findAllByGenre(genreId);
         }
         model.addAttribute("theatres", theatreList);
